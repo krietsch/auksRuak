@@ -1,6 +1,6 @@
 Package: auksruak
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Collection of functions used to analyse and visualise spatial data from Red Phalaropes (auksruak in Inupiat). Mainly combining data.table, sf and ggplot2.
 Version: 0.1.0
 Author: Who wrote it
 Maintainer: The package maintainer <yourself@somewhere.net>
