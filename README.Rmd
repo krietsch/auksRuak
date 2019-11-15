@@ -22,3 +22,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Collection of functions (mainly for myself) used to analyse and visualise spatial data from Red Phalaropes (auksruak in Inupiat). Mainly combining data.table, sf and ggplot2.
 
+### Installation
+
+```R
+install.packages('devtools')
+devtools::install_github('krietsch/auksruak')
+```
