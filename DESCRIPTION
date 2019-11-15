@@ -5,8 +5,15 @@ Version: 0.1.0
 Author: c( person("Johannes", "Krietsch", email = "jkrietsch@orn.mpg.de", role = c("cre", "aut")))
 Maintainer: Johannes Krietsch <jkrietsch@orn.mpg.de>
 Description: Collection of functions used to analyse and visualise spatial data from Red Phalaropes (auksruak in Inupiat). Mainly combining data.table, sf and ggplot2.
+Imports: 
+  data.table,
+  magrittr,
+  sf,
+  foreach,
+  ggplot2
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/krietsch/auksruak
 BugReports: https://github.com/krietsch/auksruak/issues
+RoxygenNote: 7.0.0
