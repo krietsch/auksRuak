@@ -25,15 +25,13 @@ st_transform.DT <- function(DT, lat = 'lat', lon = 'lon',
 
   if(nrow(DT) > 0) {
     setnames(DT, c(lat, lon), c('lat', 'lon'))
-    pp = st_point(c(DT$lon, DT$lat)) %>% st_sfc(., crs = from)
+    pp = st_as_sf(DT, coords = c('lon', 'lat'), crs = from)
     pp = st_transform(pp, crs = to) %>% st_coordinates
     DT[, ':=' (lon =  pp[, 1], lat =  pp[, 2]) ]
     setnames(DT, c('lat', 'lon'), c(lat, lon))
     setattr(DT, 'proj4string', to)
   }
 }
-
-
 
 
 
