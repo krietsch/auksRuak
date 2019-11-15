@@ -1,11 +1,10 @@
 Package: auksruak
 Type: Package
-Title: Collection of functions used to analyse and visualise spatial data from Red Phalaropes (auksruak in Inupiat). Mainly combining data.table, sf and ggplot2.
+Title: Analyse and visualise spatial data from Red Phalaropes
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: c( person("Johannes", "Krietsch", email = "jkrietsch@orn.mpg.de", role = c("cre", "aut")))
+Maintainer: Johannes Krietsch <jkrietsch@orn.mpg.de>
+Description: Collection of functions used to analyse and visualise spatial data from Red Phalaropes (auksruak in Inupiat). Mainly combining data.table, sf and ggplot2.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
