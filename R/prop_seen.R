@@ -9,9 +9,9 @@
 #' @export
 #'
 #' @examples
-#' require(data.table)
-#' require(foreach)
-#' require(ggplot2)
+# require(data.table)
+# require(foreach)
+# require(ggplot2)
 #'
 #' dt = data.table(category  = c(rep('M', 100), rep('F', 100)),
 #'                 ID_unique = as.character(c(1:200)),
