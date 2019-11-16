@@ -39,29 +39,24 @@
 #' }
 
 point_over_poly_DT <- function(DT, lat = 'lat', lon = 'lon', poly,  buffer = NA,
-                               PROJ = '+proj=laea +lat_0=90 +lon_0=-156.653428 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 '){
+                               projection = '+proj=laea +lat_0=90 +lon_0=-156.653428 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 '){
 
   if(nrow(DT) > 0) {
 
     setnames(DT, c(lat, lon), c('lat', 'lon'))
 
     # change projection
-    poly = st_transform(poly, crs = PROJ)
+    poly = st_transform(poly, crs = projection)
 
     # buffer
     if(!is.na(buffer)) {poly = st_buffer(poly, dist = buffer) } # in meter
 
     # assign points in study site
-    st_DT = st_as_sf(DT, coords = c('lon','lat'), crs = PROJ)
-    poly_name = poly %>% names
-    DT[, over := as.data.frame(st_join(st_DT, poly, join = st_intersects))[poly_name[1]]]
-    DT[, poly_overlap := ifelse(is.na(over), FALSE, TRUE), by = 1:nrow(st_DT)]
-    DT[, over := NULL]
+    st_DT = st_as_sf(DT, coords = c('lon','lat'), crs = projection)
+    DT[, poly_overlap := st_intersects(st_DT, poly, sparse = FALSE)]
 
     setnames(DT, c('lat', 'lon'), c(lat, lon))
 
   }
 }
-
-
 
