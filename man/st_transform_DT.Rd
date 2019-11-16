@@ -32,11 +32,10 @@ Change the projection within a data table
 }
 \examples{
 require(data.table)
-require(sf)
 
-DT = data.table(name = 'Utqiagvik',
-                lat  = 71.320854,
-                lon  = -156.648210)
+DT = data.table(name = c('NARL', 'Utqiagvik'),
+                lat  = c(71.320854, 71.290246),
+                lon  = c(-156.648210, -156.788622))
 
 st_transform_DT(DT)
 }

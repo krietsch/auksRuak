@@ -9,13 +9,16 @@
 #' @return     Data.table as it was with changed projection
 #' @export
 #'
+#' @import     data.table
+#' @importFrom sf st_as_sf st_transform st_coordinates
+#' @importFrom magrittr %>%
+#'
 #' @examples
 #' require(data.table)
-#' require(sf)
 #'
-#' DT = data.table(name = 'Utqiagvik',
-#'                 lat  = 71.320854,
-#'                 lon  = -156.648210)
+#' DT = data.table(name = c('NARL', 'Utqiagvik'),
+#'                 lat  = c(71.320854, 71.290246),
+#'                 lon  = c(-156.648210, -156.788622))
 #'
 #' st_transform_DT(DT)
 

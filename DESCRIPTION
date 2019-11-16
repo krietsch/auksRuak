@@ -6,17 +6,13 @@ Author: c( person("Johannes", "Krietsch", email = "jkrietsch@orn.mpg.de", role =
 Maintainer: Johannes Krietsch <jkrietsch@orn.mpg.de>
 Description: Collection of functions used to analyse and visualise spatial data from Red Phalaropes (auksruak in Inupiat). Mainly combining data.table, sf and ggplot2.
 Depends:
-  data.table,
-  magrittr,
-  sf,
-  foreach,
-  ggplot2
+  R (>= 3.5.0),
+  data.table
 Imports:
-  data.table,
-  magrittr,
   sf,
-  foreach,
-  ggplot2
+  magrittr,
+  ggplot2,
+  foreach
 License:  GPL (>= 3) + file LICENSE
 Encoding: UTF-8
 LazyData: true

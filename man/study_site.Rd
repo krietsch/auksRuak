@@ -18,7 +18,4 @@ Red Phalarope study site (mainly NARL in Utqiagvik)
 study_site
 
 }
-\references{
-
-}
 \keyword{datasets}

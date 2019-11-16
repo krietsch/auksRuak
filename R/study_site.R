@@ -15,8 +15,6 @@
 #'
 #' @keywords datasets
 #'
-#' @references
-#'
 #' @examples
 #' study_site
 #'

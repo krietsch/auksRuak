@@ -29,10 +29,12 @@ dt = data.table(category  = c(rep('M', 100), rep('F', 100)),
 
 ds = prop_seen(dt, 'category', 'ID_unique', 'time_seen')
 
+\dontrun{
 ggplot(data = ds, aes(x = time_step, y = prop_seen, col = category)) +
   scale_y_continuous(limits = c(0, 1)) +
   geom_line(size = 1.5) +
   scale_color_brewer(name = 'Category', palette = 'Dark2') +
   labs(x = 'Days seen', y = 'Proportion of individuals') +
   theme_classic(base_size = 24)
+}
 }

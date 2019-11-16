@@ -8,10 +8,13 @@
 #' @return          Data.table with category, time_step and proportion seen
 #' @export
 #'
+#' @import          data.table
+#' @importFrom      magrittr %>%
+#' @importFrom      foreach foreach %do%
+#' @importFrom      ggplot2 ggplot
+#'
 #' @examples
 # require(data.table)
-# require(foreach)
-# require(ggplot2)
 #'
 #' dt = data.table(category  = c(rep('M', 100), rep('F', 100)),
 #'                 ID_unique = as.character(c(1:200)),
@@ -19,12 +22,16 @@
 #'
 #' ds = prop_seen(dt, 'category', 'ID_unique', 'time_seen')
 #'
+#' \dontrun{
+# require(ggplot2)
+
 #' ggplot(data = ds, aes(x = time_step, y = prop_seen, col = category)) +
 #'   scale_y_continuous(limits = c(0, 1)) +
 #'   geom_line(size = 1.5) +
 #'   scale_color_brewer(name = 'Category', palette = 'Dark2') +
 #'   labs(x = 'Days seen', y = 'Proportion of individuals') +
 #'   theme_classic(base_size = 24)
+#' }
 
 prop_seen = function(DT, category, ID_unique, time_seen){
 
