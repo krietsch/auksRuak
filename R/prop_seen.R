@@ -35,6 +35,8 @@
 
 prop_seen = function(DT, category, ID_unique, time_seen){
 
+  k = i = time_step = . = NULL
+
   setnames(DT, c(category, ID_unique, time_seen), c('category', 'ID_unique', 'time_seen'))
 
   # loop calculating for each time step which ID was still seen
