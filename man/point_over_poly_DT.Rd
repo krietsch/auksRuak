@@ -11,7 +11,7 @@ point_over_poly_DT(
   poly,
   buffer = NA,
  
-    PROJ = "+proj=laea +lat_0=90 +lon_0=-156.653428 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 "
+    projection = "+proj=laea +lat_0=90 +lon_0=-156.653428 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 "
 )
 }
 \arguments{
@@ -25,7 +25,7 @@ point_over_poly_DT(
 
 \item{buffer}{Buffer distance (see st_buffer)}
 
-\item{PROJ}{Projection of the data (default is equal area with centre Barrow)}
+\item{projection}{Projection of the data (default is equal area with centre Barrow)}
 }
 \value{
 Data.table with additional conditional column poly_overlap

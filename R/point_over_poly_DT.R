@@ -5,7 +5,7 @@
 #' @param lon    Name of the column with longitude (as.character)
 #' @param poly   Name of the polygon to overlap the data with (changes projection to PROJ)
 #' @param buffer Buffer distance (see st_buffer)
-#' @param PROJ   Projection of the data (default is equal area with centre Barrow)
+#' @param projection   Projection of the data (default is equal area with centre Barrow)
 #'
 #' @return       Data.table with additional conditional column poly_overlap
 #' @export
