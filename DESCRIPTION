@@ -12,7 +12,8 @@ Imports:
   sf,
   magrittr,
   ggplot2,
-  foreach
+  foreach,
+  ggspatial
 License:  GPL (>= 3) + file LICENSE
 Encoding: UTF-8
 LazyData: true
