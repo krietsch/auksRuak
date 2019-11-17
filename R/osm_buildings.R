@@ -1,0 +1,24 @@
+#' Base map polygons
+#'
+#' Open street map polygons of buildings
+#'
+#' @name osm_buildings
+#'
+#' @docType data
+#'
+#' @usage data(osm_buildings)
+#'
+#' @format sf polygons from open street map  in '+proj=laea +lat_0=90 +lon_0=-156.653428 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 '
+#' \itemize{
+#'   \item buildings
+#'   }
+#'
+#' @references \url{http://openstreetmapdata.com}
+#' @source \url{http://openstreetmapdata.com/data/land-polygons}
+#'
+#' @keywords datasets
+#'
+#' @examples
+#' osm_buildings
+#'
+NULL
