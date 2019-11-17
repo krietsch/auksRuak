@@ -19,7 +19,7 @@
 #' require(data.table)
 #'
 #' # load study site
-#' data(study_site)
+#' study_site
 #'
 #' # create table with one inside and one outside the study site
 #' DT = data.table(name = c('NARL', 'Utqiagvik'),
