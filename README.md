@@ -12,9 +12,8 @@ Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://opensour
 ## To do
 
   - add functions to create maps
-  - 
 
-## auksruak
+## auksRuak
 
 Collection of functions (mainly for myself) used to analyse and
 visualise spatial data from Red Phalaropes (auksruak in Inupiat). Mainly
@@ -24,5 +23,5 @@ combining data.table, sf and ggplot2.
 
 ``` r
 install.packages('devtools')
-devtools::install_github('krietsch/auksruak')
+devtools::install_github('krietsch/auksRuak')
 ```
