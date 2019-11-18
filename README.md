@@ -19,6 +19,10 @@ Collection of functions (mainly for myself) used to analyse and
 visualise spatial data from Red Phalaropes (auksruak in Inupiat). Mainly
 combining data.table, sf and ggplot2.
 
+![](README_files/figure-gfm/unnamed-chunk-1-1.png)<!-- --> Drawing by
+[Killian
+Mullarney](https://images-na.ssl-images-amazon.com/images/G/01/randoEMS/p193_RedPhalarope_Mullarney_lg.jpg)
+
 ### Installation
 
 ``` r
