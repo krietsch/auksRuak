@@ -4,3 +4,7 @@ language: R
 sudo: required
 warnings_are_errors: false
 
+addons:
+  apt:
+    packages:
+      - libudunits2-dev
