@@ -20,3 +20,4 @@ after_success:
   - Rscript -e 'devtools::install();devtools::test()'
   - Rscript -e 'library(covr); codecov()'
 
+
