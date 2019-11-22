@@ -4,20 +4,12 @@ language: R
 sudo: required
 warnings_are_errors: false
 
-before_install:
-  - sudo apt-get install -y libproj-dev libgeos-dev libnetcdf-dev gdal-bin libgdal-dev  libgeos-dev
+install:
+  - R -e "0" --args --bootstrap-packrat
+  - R -e "packrat::restore(restart = FALSE)"
 
-r_binary_packages:
-  - reticulate
-  - magrittr
-  - data.table
-  - sf
-  - ggplot2
-  - foreach
-
-after_success:
-  - Rscript -e 'devtools::install();devtools::test()'
-  - Rscript -e 'library(covr); codecov()'
-
-
-
+cache:
+directories:
+  - $TRAVIS_BUILD_DIR/packrat/src
+  - $TRAVIS_BUILD_DIR/packrat/lib
+packages: true
