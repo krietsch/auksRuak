@@ -10,7 +10,7 @@ test_that('point_over_poly_DT', {
 
   # change projection
   st_transform_DT(DT)
-  point_over_poly_DT(DT, lat = 'lat', lon = 'lon', poly = study_site)
+  point_over_poly_DT(DT, lat = 'lat', lon = 'lon', poly = study_site, buffer = 1)
 
   expect_s3_class( DT, 'data.table' )
 
