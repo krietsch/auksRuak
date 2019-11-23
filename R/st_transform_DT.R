@@ -24,7 +24,8 @@
 
 st_transform_DT <- function(DT, lat = 'lat', lon = 'lon',
                             from = '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs',
-                            to = '+proj=laea +lat_0=90 +lon_0=-156.653428 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 ') {
+                            to = paste0('+proj=laea +lat_0=90 +lon_0=-156.653428 +x_0=0 +y_0=0',
+                                        ' +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 ')){
 
   if(nrow(DT) > 0) {
     setnames(DT, c(lat, lon), c('lat', 'lon'))

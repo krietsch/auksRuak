@@ -34,7 +34,8 @@ globalVariables(c('.', 'osm_land', 'osm_lakes', 'osm_rivers', 'osm_roads', 'osm_
 #' bm
 
 create_bm = function(DT, lat = 'lat', lon = 'lon', buffer = 1000, sc_dist,
-                     projection = '+proj=laea +lat_0=90 +lon_0=-156.653428 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 '){
+                     projection = paste0('+proj=laea +lat_0=90 +lon_0=-156.653428 +x_0=0 +y_0=0',
+                                         ' +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 ')){
 
   if(nrow(DT) > 0) {
 
@@ -43,13 +44,6 @@ create_bm = function(DT, lat = 'lat', lon = 'lon', buffer = 1000, sc_dist,
     st_d = st_as_sf(DT[!is.na(lon), .(lon, lat)], coords = c('lon','lat'), crs = projection)
     rs_extent = st_d %>% st_bbox(crs = projection) %>% st_as_sfc %>% st_buffer(buffer) %>% st_bbox(crs = projection) %>% st_as_sfc %>% st_geometry
     bb = st_bbox(rs_extent) %>% data.table
-
-    # make
-    st_agr(osm_land) = 'constant'
-    st_agr(osm_lakes) = 'constant'
-    st_agr(osm_rivers) = 'constant'
-    st_agr(osm_roads) = 'constant'
-    st_agr(osm_buildings) = 'constant'
 
     # crop data
     land      = st_intersection(osm_land, rs_extent)
