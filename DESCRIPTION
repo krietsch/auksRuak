@@ -14,9 +14,12 @@ Imports:
   ggplot2,
   foreach,
   ggspatial
-License:  GPL (>= 3) + file LICENSE
+License: GPL (>= 3) + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/krietsch/auksruak
 BugReports: https://github.com/krietsch/auksruak/issues
 RoxygenNote: 7.0.0
+Suggests: 
+    testthat (>= 2.1.0),
+    covr
