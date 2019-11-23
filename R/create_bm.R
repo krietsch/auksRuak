@@ -44,6 +44,13 @@ create_bm = function(DT, lat = 'lat', lon = 'lon', buffer = 1000, sc_dist,
     rs_extent = st_d %>% st_bbox(crs = projection) %>% st_as_sfc %>% st_buffer(buffer) %>% st_bbox(crs = projection) %>% st_as_sfc %>% st_geometry
     bb = st_bbox(rs_extent) %>% data.table
 
+    # make
+    st_agr(osm_land) = 'constant'
+    st_agr(osm_lakes) = 'constant'
+    st_agr(osm_rivers) = 'constant'
+    st_agr(osm_roads) = 'constant'
+    st_agr(osm_buildings) = 'constant'
+
     # crop data
     land      = st_intersection(osm_land, rs_extent)
     lakes     = st_intersection(osm_lakes, rs_extent)
