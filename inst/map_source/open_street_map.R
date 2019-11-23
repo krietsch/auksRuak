@@ -58,6 +58,12 @@ osm_rivers    = st_transform(rivers, crs = PROJ)
 osm_roads     = st_transform(roads, crs = PROJ)
 osm_buildings = st_transform(buildings, crs = PROJ)
 
+# make attributes constant (suppress warning from st_intersect)
+st_agr(osm_land) <- 'constant'
+st_agr(osm_lakes) <- 'constant'
+st_agr(osm_rivers) <- 'constant'
+st_agr(osm_roads) <- 'constant'
+st_agr(osm_buildings) <- 'constant'
 
 # check data
 ggplot() +
