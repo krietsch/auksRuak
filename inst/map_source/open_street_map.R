@@ -79,7 +79,20 @@ save(osm_rivers, file = './data/osm_rivers.RData', compress = 'xz')
 save(osm_roads, file = './data/osm_roads.RData', compress = 'xz')
 save(osm_buildings, file = './data/osm_buildings.RData', compress = 'xz')
 
+# compression changed projection
+PROJ = paste0('+proj=laea +lat_0=90 +lon_0=-156.653428 +x_0=0 +y_0=0',
+              ' +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 ')
 
+st_crs(osm_land) <- PROJ
+st_crs(osm_lakes) <- PROJ
+st_crs(osm_rivers) <- PROJ
+st_crs(osm_roads) <- PROJ
+st_crs(osm_buildings) <- PROJ
 
-
+# save data
+save(osm_land, file = './data/osm_land.RData')
+save(osm_lakes, file = './data/osm_lakes.RData')
+save(osm_rivers, file = './data/osm_rivers.RData')
+save(osm_roads, file = './data/osm_roads.RData')
+save(osm_buildings, file = './data/osm_buildings.RData')
 
