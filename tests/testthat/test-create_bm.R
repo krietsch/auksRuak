@@ -12,7 +12,7 @@ test_that('create_bm', {
   st_transform_DT(DT)
 
   # create base map
-  bm = create_bm(DT)
+  bm = auksRuak::create_bm(DT)
 
   expect_s3_class( bm, 'ggplot' )
 
