@@ -15,7 +15,7 @@ globalVariables(c('.', 'osm_land', 'osm_lakes', 'osm_rivers', 'osm_roads', 'osm_
 #' @export
 #'
 #' @import           data.table
-#' @importFrom       sf st_as_sf st_transform st_join st_buffer st_intersects st_geometry st_intersection st_bbox st_as_sfc
+#' @importFrom       sf st_as_sf st_transform st_join st_buffer st_intersects st_geometry st_intersection st_bbox st_as_sfc st_crs
 #' @importFrom       magrittr %>%
 #' @importFrom       ggplot2 ggplot geom_sf coord_sf aes theme element_line element_rect element_blank unit
 #' @importFrom       ggspatial annotation_scale
@@ -43,6 +43,7 @@ create_bm = function(DT, lat = 'lat', lon = 'lon', buffer = 1000, sc_dist,
 
     st_d = st_as_sf(DT[!is.na(lon), .(lon, lat)], coords = c('lon','lat'), crs = projection)
     rs_extent = st_d %>% st_bbox(crs = projection) %>% st_as_sfc %>% st_buffer(buffer) %>% st_bbox(crs = projection) %>% st_as_sfc %>% st_geometry
+    rs_extent = st_transform(rs_extent, crs = st_crs(osm_land))
     bb = st_bbox(rs_extent) %>% data.table
 
     # crop data
