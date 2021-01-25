@@ -9,6 +9,7 @@ globalVariables(c('.', 'osm_land', 'osm_lakes', 'osm_rivers', 'osm_roads', 'osm_
 #' @param lon        Name of the column with longitude (as.character)
 #' @param buffer     Buffer around the data
 #' @param sc_dist    Distance of the scale
+#' @param squared    If true buffer is created around the centre and outline squared
 #' @param projection Projection of the data (default is equal area with centre Barrow)
 #'
 #' @return           bm, a ggplot2 base map
@@ -33,7 +34,7 @@ globalVariables(c('.', 'osm_land', 'osm_lakes', 'osm_rivers', 'osm_roads', 'osm_
 #' bm = create_bm(DT)
 #' bm
 
-create_bm = function(DT, lat = 'lat', lon = 'lon', buffer = 1000, sc_dist,
+create_bm = function(DT, lat = 'lat', lon = 'lon', buffer = 1000, sc_dist, squared = FALSE,
                      projection = paste0('+proj=laea +lat_0=90 +lon_0=-156.653428 +x_0=0 +y_0=0',
                                          ' +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 ')){
 
@@ -41,10 +42,21 @@ create_bm = function(DT, lat = 'lat', lon = 'lon', buffer = 1000, sc_dist,
 
     setnames(DT, c(lat, lon), c('lat', 'lon'))
 
-    st_d = st_as_sf(DT[!is.na(lon), .(lon, lat)], coords = c('lon','lat'), crs = projection)
-    rs_extent = st_d %>% st_bbox(crs = projection) %>% st_as_sfc %>% st_buffer(buffer) %>% st_bbox(crs = projection) %>% st_as_sfc %>% st_geometry
-    rs_extent = st_transform(rs_extent, crs = st_crs(osm_land))
-    bb = st_bbox(rs_extent) %>% data.table
+    if(squared == TRUE){
+      center_lon = min(DT$lon) + (max(DT$lon) - min(DT$lon))/2
+      center_lat = min(DT$lat) + (max(DT$lat) - min(DT$lat))/2
+      center_point = st_point(x = c(center_lon, center_lat)) %>% st_sfc(crs = projection)
+      rs_extent = center_point %>% st_buffer(buffer) %>% st_bbox(crs = projection) %>% st_as_sfc %>% st_geometry
+      rs_extent = st_transform(rs_extent, crs = st_crs(osm_land))
+      bb = st_bbox(rs_extent) %>% data.table
+
+    } else {
+
+      st_d = st_as_sf(DT[!is.na(lon), .(lon, lat)], coords = c('lon','lat'), crs = projection)
+      rs_extent = st_d %>% st_bbox(crs = projection) %>% st_as_sfc %>% st_buffer(buffer) %>% st_bbox(crs = projection) %>% st_as_sfc %>% st_geometry
+      rs_extent = st_transform(rs_extent, crs = st_crs(osm_land))
+      bb = st_bbox(rs_extent) %>% data.table
+    }
 
     # crop data
     land      = st_intersection(osm_land, rs_extent)
