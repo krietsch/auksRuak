@@ -45,6 +45,7 @@ roads_      = st_read(paste0(wd, 'alaska-latest-free.shp/gis_osm_roads_BRW.shp')
 buildings_  = st_read(paste0(wd, 'alaska-latest-free.shp/gis_osm_buildings_a_free_1.shp'))
 
 # crop data
+sf_use_s2(FALSE)
 land      = st_intersection(land_, bbox_latlon)
 lakes     = st_intersection(lakes_, bbox_latlon)
 rivers    = st_intersection(rivers_, bbox_latlon)
