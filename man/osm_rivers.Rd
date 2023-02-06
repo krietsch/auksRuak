@@ -4,10 +4,12 @@
 \name{osm_rivers}
 \alias{osm_rivers}
 \title{Base map polygons}
-\format{sf polygons from open street map  in '+proj=laea +lat_0=90 +lon_0=-156.653428 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 '
+\format{
+sf polygons from open street map  in '+proj=laea +lat_0=90 +lon_0=-156.653428 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 '
 \itemize{
   \item rivers
-  }}
+  }
+}
 \source{
 \url{http://download.geofabrik.de/north-america/us/alaska.html}
 }
