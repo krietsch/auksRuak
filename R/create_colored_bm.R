@@ -4,23 +4,25 @@ globalVariables(c('.', 'osm_land', 'osm_lakes', 'osm_rivers', 'osm_roads', 'osm_
 #'
 #' Use open street map data to create a basemap with the extent of the data
 #'
-#' @param DT         Name of the data.table
-#' @param lat        Name of the column with latitude (as.character)
-#' @param lon        Name of the column with longitude (as.character)
-#' @param buffer     Buffer around the data
-#' @param sc_dist    Distance of the scale
-#' @param aspect     Set aspect ratio of the base map
-#' @param projection Projection of the data (default is equal area with centre Barrow)
+#' @param DT          Name of the data.table
+#' @param lat         Name of the column with latitude (as.character)
+#' @param lon         Name of the column with longitude (as.character)
+#' @param buffer      Buffer around the data
+#' @param aspect      Set aspect ratio of the base map
+#' @param sc_dist     Distance of the scale
+#' @param sc_location Where to put the scale bar ("tl" for top left, etc.)
+#' @param sc_cex      Label size as numeric character expansion factor
+#' @param projection  Projection of the data (default is equal area with centre Barrow)
 #'
-#' @return           bm, a ggplot2 base map
+#' @return            bm, a ggplot2 base map
 #' @export
 #'
-#' @import           data.table
-#' @importFrom       sf st_as_sf st_transform st_join st_buffer st_intersects st_geometry st_intersection st_bbox st_as_sfc st_crs
-#' @importFrom       magrittr %>%
-#' @importFrom       ggplot2 ggplot geom_sf coord_sf aes theme element_line element_rect element_blank unit
-#' @importFrom       ggspatial annotation_scale
-#' @importFrom       sfext st_bbox_ext
+#' @import            data.table
+#' @importFrom        sf st_as_sf st_transform st_join st_buffer st_intersects st_geometry st_intersection st_bbox st_as_sfc st_crs
+#' @importFrom        magrittr %>%
+#' @importFrom        ggplot2 ggplot geom_sf coord_sf aes theme element_line element_rect element_blank unit
+#' @importFrom        ggspatial annotation_scale
+#' @importFrom        sfext st_bbox_ext
 #'
 #' @examples
 #' # create table with two points
@@ -35,7 +37,8 @@ globalVariables(c('.', 'osm_land', 'osm_lakes', 'osm_rivers', 'osm_roads', 'osm_
 #' bm = create_colored_bm(DT)
 #' bm
 
-create_colored_bm = function(DT, lat = 'lat', lon = 'lon', buffer = 1000, sc_dist, aspect = '16:9',
+create_colored_bm = function(DT, lat = 'lat', lon = 'lon', buffer = 1000, aspect = '16:9', sc_dist,
+                             sc_location = 'br', sc_cex = 0.7,
                              projection = paste0('+proj=laea +lat_0=90 +lon_0=-156.653428 +x_0=0 +y_0=0',
                                                  ' +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 ')){
 
@@ -59,7 +62,7 @@ create_colored_bm = function(DT, lat = 'lat', lon = 'lon', buffer = 1000, sc_dis
       geom_sf(data = osm_roads, color = 'grey70') +
       geom_sf(data = osm_buildings, color = 'grey30') +
       coord_sf(expand = FALSE, xlim = c(bb$.[1], bb$.[3]), ylim = c(bb$.[2], bb$.[4])) +
-      ggspatial::annotation_scale(aes(location = 'br'), text_cex = 2) +
+      ggspatial::annotation_scale(aes(location = scale_bar_location), text_cex = 2) +
       theme(panel.grid.major = element_line(colour = "transparent"),
             panel.grid.minor = element_line(colour = "transparent"),
             panel.background = element_rect(fill = '#D7E7FF'),
