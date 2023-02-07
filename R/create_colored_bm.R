@@ -44,7 +44,7 @@ create_colored_bm = function(DT, lat = 'lat', lon = 'lon', buffer = 1000, sc_dis
 
     # create bounding box
     st_d = st_as_sf(DT[!is.na(lon), .(lon, lat)], coords = c('lon','lat'), crs = projection)
-    rs_extent = st_d() |> st_bbox(crs = projection) |>  st_as_sfc() |> st_buffer(buffer) |>
+    rs_extent = st_d |> st_bbox(crs = projection) |>  st_as_sfc() |> st_buffer(buffer) |>
       st_bbox_ext(asp = aspect, crs = projection) |> st_as_sfc() |> st_geometry()
     rs_extent = st_transform(rs_extent, crs = st_crs(osm_land))
     bb = st_bbox(rs_extent) |> data.table()
