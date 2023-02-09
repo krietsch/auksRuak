@@ -67,7 +67,7 @@ create_colored_bm = function(DT, lat = 'lat', lon = 'lon', buffer = 1000, aspect
       geom_sf(data = osm_buildings, color = 'grey30') +
       coord_sf(expand = FALSE, xlim = c(bb$.[1], bb$.[3]), ylim = c(bb$.[2], bb$.[4])) +
       ggspatial::annotation_scale(aes(location = sc_location), text_cex = sc_cex, height = sc_height,
-                                  pad_y = sc_pad_x, pad_y = sc_pad_y) +
+                                  pad_x = sc_pad_x, pad_y = sc_pad_y) +
       theme(panel.grid.major = element_line(colour = "transparent"),
             panel.grid.minor = element_line(colour = "transparent"),
             panel.background = element_rect(fill = '#D7E7FF'),
