@@ -14,6 +14,8 @@ create_colored_bm(
   sc_location = "br",
   sc_cex = 0.7,
   sc_height = unit(0.25, "cm"),
+  sc_pad_x = unit(0.25, "cm"),
+  sc_pad_y = unit(0.5, "cm"),
   projection = paste0("+proj=laea +lat_0=90 +lon_0=-156.653428 +x_0=0 +y_0=0",
     " +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 ")
 )
@@ -36,6 +38,10 @@ create_colored_bm(
 \item{sc_cex}{Label size as numeric character expansion factor}
 
 \item{sc_height}{Thickness of the scale bar}
+
+\item{sc_pad_x}{Distance from edge of the scale bar (annotation_scale}
+
+\item{sc_pad_y}{Distance from edge of the scale bar (annotation_scale}
 
 \item{projection}{Projection of the data (default is equal area with centre Barrow)}
 }

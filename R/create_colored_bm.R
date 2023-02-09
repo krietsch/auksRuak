@@ -13,6 +13,8 @@ globalVariables(c('.', 'osm_land', 'osm_lakes', 'osm_rivers', 'osm_roads', 'osm_
 #' @param sc_location Where to put the scale bar ("tl" for top left, etc.)
 #' @param sc_cex      Label size as numeric character expansion factor
 #' @param sc_height   Thickness of the scale bar
+#' @param sc_pad_x    Distance from edge of the scale bar (annotation_scale
+#' @param sc_pad_y    Distance from edge of the scale bar (annotation_scale
 #' @param projection  Projection of the data (default is equal area with centre Barrow)
 #'
 #' @return            bm, a ggplot2 base map
@@ -40,6 +42,7 @@ globalVariables(c('.', 'osm_land', 'osm_lakes', 'osm_rivers', 'osm_roads', 'osm_
 
 create_colored_bm = function(DT, lat = 'lat', lon = 'lon', buffer = 1000, aspect = '16:9', sc_dist,
                              sc_location = 'br', sc_cex = 0.7, sc_height = unit(0.25, "cm"),
+                             sc_pad_x = unit(0.25, "cm"), sc_pad_y = unit(0.5, "cm"),
                              projection = paste0('+proj=laea +lat_0=90 +lon_0=-156.653428 +x_0=0 +y_0=0',
                                                  ' +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 ')){
 
@@ -63,7 +66,8 @@ create_colored_bm = function(DT, lat = 'lat', lon = 'lon', buffer = 1000, aspect
       geom_sf(data = osm_roads, color = 'grey70') +
       geom_sf(data = osm_buildings, color = 'grey30') +
       coord_sf(expand = FALSE, xlim = c(bb$.[1], bb$.[3]), ylim = c(bb$.[2], bb$.[4])) +
-      ggspatial::annotation_scale(aes(location = sc_location), text_cex = sc_cex, height = sc_height) +
+      ggspatial::annotation_scale(aes(location = sc_location), text_cex = sc_cex, height = sc_height,
+                                  pad_y = sc_pad_x, pad_y = sc_pad_y) +
       theme(panel.grid.major = element_line(colour = "transparent"),
             panel.grid.minor = element_line(colour = "transparent"),
             panel.background = element_rect(fill = '#D7E7FF'),
