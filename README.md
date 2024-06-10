@@ -13,17 +13,13 @@ v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org
 [![Open Source
 Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://opensource.org/)
 
-## To do
-
-  - add functions to define pair bond
-
 ## auksRuak
 
 Collection of functions (mainly for myself) used to analyse and
 visualise spatial data from [Red
 Phalaropes](https://en.wikipedia.org/wiki/Red_phalarope) (auksruak in
-[Iñupiat](https://en.wikipedia.org/wiki/I%C3%B1upiat)). Mainly
-combining [data.table](https://github.com/Rdatatable/data.table),
+[Iñupiat](https://en.wikipedia.org/wiki/I%C3%B1upiat)). Mainly combining
+[data.table](https://github.com/Rdatatable/data.table),
 [sf](https://github.com/r-spatial/sf) and
 [ggplot2](https://github.com/tidyverse/ggplot2).
 
